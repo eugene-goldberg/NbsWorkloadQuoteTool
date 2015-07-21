@@ -16,6 +16,71 @@ angular.module('datacollectors').controller('SalesforceUpdateController',
 
         $scope.selectedOpportunity = [];
 
+        $scope.industries = [
+            {
+                name: 'Global Industries'
+            },
+            {
+                name: 'Consumer & Retail'
+            },
+            {
+                name: 'Healthcare & Life Sciences'
+            },
+            {
+                name: 'Energy & Technology'
+            },
+            {
+                name: 'Insurance'
+            },
+            {
+                name: 'Banking & Capital Markets'
+            },
+            {
+                name: 'Manufacturing'
+            }
+        ];
+
+        $scope.dcRegions = [
+            {
+                name: "Americas"
+            },
+            {
+                name: "AMEA"
+            },
+            {
+                name: "India "
+            },
+            {
+                name: "Nordics"
+            },
+            {
+                name: "UK&I"
+            },
+            {
+                name: 'Australia & NZ'
+            },
+            {
+                name: 'SW Europe'
+            },
+            {
+                name: 'C&E EUROPE'
+            }
+        ];
+
+        $scope.vendorDcNames = [
+            {
+                name: 'DC 1'
+            },
+            {
+                name: 'DC 2'
+            },
+            {
+                name: 'DC 3'
+            }
+        ];
+
+        $scope.opportunityIndustry;
+
         $scope.isAdmin = false;
 
         function assertIsAdmin(){
@@ -80,10 +145,18 @@ angular.module('datacollectors').controller('SalesforceUpdateController',
                 $scope.solutionArchitectName = response.SolutionArchitectName;
                 $scope.opportunityOwner = response.OpportunityOwner;
                 $scope.noDcInTheDeal = response.NoDcInTheDeal;
+                $scope.opportunityIndustry = response.Industry;
+
+                $scope.industries.forEach(function(industry){
+                   if(industry.name === $scope.opportunityIndustry){
+                       industry.ticked = true;
+                   }
+                });
 
                 console.log('response: ' + response);
                 console.log('opportunityName: ' + $scope.opportunityName);
                 console.log('accountName: ' + $scope.accountName);
+                console.log('Industry: ' + $scope.Industry);
 
                 $scope.selectedOpportunity.push(response);
             });
@@ -102,6 +175,19 @@ angular.module('datacollectors').controller('SalesforceUpdateController',
                     $scope.solutionArchitectName = response.SolutionArchitectName;
                     $scope.opportunityOwner = response.OpportunityOwner;
                     $scope.noDcInTheDeal = response.NoDcInTheDeal;
+                    $scope.opportunityIndustry = response.Industry;
+
+                    $scope.industries.forEach(function(industry){
+                        if(industry.name === $scope.opportunityIndustry){
+                            industry.ticked = true;
+                        }
+                    });
+
+                //Get the Dc Vendor mapping for selected Industry:
+                $http.get('/dc_vendor_industry_mapping/?industry=' + $scope.opportunityIndustry).success(function(response) {
+                    $scope.dcVendor = response;
+                });
+
 
                 console.log('response: ' + response);
                 console.log('opportunityName: ' + $scope.opportunityName);
@@ -252,27 +338,27 @@ angular.module('datacollectors').controller('SalesforceUpdateController',
 
         //$scope.selectedDcName = [{name: "dc", ticked: true}];
 
-        $scope.$watch(function(scope) {return  $scope.selectedDcName },
-            function(newValue, oldValue) {
-                if(newValue[0]){
-                    console.log('new value:  ' + newValue[0].name);
-                }
-
-                if(newValue[0]){
-                    $scope.$parent.selectedName = newValue[0].name;
-                    if($scope.selectedOpportunity){
-                        if($scope.selectedOpportunity.length > 0){
-                            if($scope.selectedOpportunity[0].name){
-                                getDataCenterDetail($scope.selectedOpportunity[0].name,newValue[0].name);
-                            }
-                            else {
-                                getDataCenterDetail($scope.selectedOpportunityId,newValue[0].name);
-                            }
-                        }
-                    }
-                }
-            }
-        );
+        //$scope.$watch(function(scope) {return  $scope.selectedDcName },
+        //    function(newValue, oldValue) {
+        //        if(newValue[0]){
+        //            console.log('new value:  ' + newValue[0].name);
+        //        }
+        //
+        //        if(newValue[0]){
+        //            $scope.$parent.selectedName = newValue[0].name;
+        //            if($scope.selectedOpportunity){
+        //                if($scope.selectedOpportunity.length > 0){
+        //                    if($scope.selectedOpportunity[0].name){
+        //                        getDataCenterDetail($scope.selectedOpportunity[0].name,newValue[0].name);
+        //                    }
+        //                    else {
+        //                        getDataCenterDetail($scope.selectedOpportunityId,newValue[0].name);
+        //                    }
+        //                }
+        //            }
+        //        }
+        //    }
+        //);
 
         $scope.$watch(function(scope) {return  $scope.selectedOpportunity },
             function(newValue, oldValue) {

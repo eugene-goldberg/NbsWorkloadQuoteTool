@@ -316,6 +316,7 @@ module.exports = function(db) {
                                     opportunityDetail.SolutionExecutiveName = doc['SolutionExecutiveName'];
                                     opportunityDetail.SolutionArchitectName = doc['SolutionArchitectName'];
                                     opportunityDetail.NoDcInTheDeal = doc['NoDcInTheDeal'];
+                                    opportunityDetail.Industry = doc['Industry'];
 
                                     opportunityDetail.kwFY16 = doc['kwFY16'];
                                     opportunityDetail.kwFY17 = doc['kwFY17'];
@@ -348,6 +349,25 @@ module.exports = function(db) {
                                 }
                             }
                         });
+                    });
+            }
+        });
+    });
+
+    app.get('/dc_vendor_industry_mapping', function(req,res){
+        var url_parts = requestUrl.parse(req.url, true);
+        var query = url_parts.query;
+        MongoClient.connect(url, function (err, db) {
+            if (err) {
+                console.log('Unable to connect to the mongoDB server. Error:', err);
+            } else {
+                console.log('Connection established to', url);
+
+                var collection = db.collection('DcVendorIndustryMapping');
+
+                collection.find({Industry: query.industry})
+                    .toArray(function(err, docs) {
+                        res.json(docs[0].DcVendor);
                     });
             }
         });

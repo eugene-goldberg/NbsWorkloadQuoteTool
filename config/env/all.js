@@ -2,11 +2,11 @@
 
 module.exports = {
 	app: {
-		title: 'DataManager 0.5',
+		title: 'NBS Workload Quote Tool',
 		description: 'Full-Stack JavaScript with MongoDB, Express, AngularJS, and Node.js',
 		keywords: 'MongoDB, Express, AngularJS, Node.js'
 	},
-	port: process.env.PORT || 3000,
+	port: process.env.PORT || 3002,
 	templateEngine: 'swig',
 	sessionSecret: 'MEAN',
 	sessionCollection: 'sessions',

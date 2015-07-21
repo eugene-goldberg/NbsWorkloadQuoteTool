@@ -23,7 +23,7 @@ angular.module('datacollectors').controller('FileUploadController',
                 $http.get('/environment').success(function(response) {
 
                 if(response.environment === 'test'){
-                     url = 'http://localhost:3000/api/files';
+                     url = 'http://localhost:3002/api/files';
                     initUploader(url);
 
                 }
