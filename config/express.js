@@ -884,6 +884,8 @@ module.exports = function(db) {
                     dcCountry = docs[0].DcCountry;
                 });
 
+                console.log('dcCountry:  ' + dcCountry);
+
                 dcInventoryCollection.find({DcCountry: dcCountry}).toArray(function(err, docs) {
                     dcRegion = docs[0].DcRegion;
                 });
