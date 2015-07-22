@@ -157,6 +157,11 @@ angular.module('datacollectors').controller('SalesforceUpdateController',
                    }
                 });
 
+                //Get the Dc Vendor mapping for selected Industry:
+                $http.get('/dc_vendor_industry_mapping/?industry=' + $scope.opportunityIndustry).success(function(response) {
+                    $scope.dcVendor = response;
+                });
+
                 console.log('response: ' + response);
                 console.log('opportunityName: ' + $scope.opportunityName);
                 console.log('accountName: ' + $scope.accountName);
