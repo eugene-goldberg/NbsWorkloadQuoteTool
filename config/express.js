@@ -1177,7 +1177,7 @@ module.exports = function(db) {
                                                 }
                                                 else {
                                                     try {
-                                                        httpResponse.send(201, fileName);
+                                                        httpResponse.status(201).send(fileName);
                                                     }
                                                     catch(err){
                                                         console.log('error sending httpResponse:  ' + err);

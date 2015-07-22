@@ -29,6 +29,10 @@ require('./config/passport')();
 // Start the app by listening on <port>
 app.listen(config.port);
 
+app.on('error', function(err) {
+    console.log('caught ' + err);
+});
+
 // Expose app
 exports = module.exports = app;
 
