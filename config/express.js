@@ -1036,6 +1036,7 @@ module.exports = function(db) {
                                                         + electricBudget2021 + electricBudget2022 + electricBudget2023 + electricBudget2024 + electricBudget2025)
                                                     });
                                              var options = { filename: 'public/modules/datacollectors/' + fileName, format: 'Letter',orientation: 'landscape' };
+                                        console.log('line 1039 attempting to create pdf at: ' + 'public/modules/datacollectors/' + fileName);
                                              pdf.create(renderedHtml, options).toFile(function(err, res) {
                                                  if (err){
                                                      console.log(res);
@@ -1150,6 +1151,7 @@ module.exports = function(db) {
                                                     electricalBudgetTotal: (electricBudget2016 + electricBudget2017 + electricBudget2017 + electricBudget2018 + electricBudget2019 + electricBudget2020
                                                     + electricBudget2021 + electricBudget2022 + electricBudget2023 + electricBudget2024 + electricBudget2025)
                                                 });
+                                        console.log('line 1154 attempting to create pdf at: ' + 'public/modules/datacollectors/' + fileName);
                                             var options = {
                                                 filename: 'public/modules/datacollectors/' + fileName,
                                                 format: 'Letter',
