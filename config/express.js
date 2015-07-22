@@ -1176,7 +1176,12 @@ module.exports = function(db) {
                                                     httpResponse.send(500);
                                                 }
                                                 else {
-                                                    httpResponse.send(201, fileName);
+                                                    try {
+                                                        httpResponse.send(201, fileName);
+                                                    }
+                                                    catch(err){
+                                                        console.log('error sending httpResponse:  ' + err);
+                                                    }
                                                 }
                                             });
                                         } catch(err){
