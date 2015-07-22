@@ -995,14 +995,10 @@ module.exports = function(db) {
                                     }
                                     else{
                                         console.log('update result:  ' + result);
-                                        try {
+
                                             var fileName = 'quote_' + Math.random() + '.pdf';
                                             var html = fs.readFileSync('public/modules/datacollectors/template.html', 'utf8');
-                                        }
-                                        catch(err){
-                                            console.log(err);
-                                        }
-                                            try {
+
                                                 var tmpl = swig.compileFile('public/modules/datacollectors/template.html'),
                                                     renderedHtml = tmpl({
                                                         DcName: req.body.dcName,
@@ -1039,26 +1035,16 @@ module.exports = function(db) {
                                                         electricalBudgetTotal: (electricBudget2016 + electricBudget2017 + electricBudget2017 + electricBudget2018 + electricBudget2019 + electricBudget2020
                                                         + electricBudget2021 + electricBudget2022 + electricBudget2023 + electricBudget2024 + electricBudget2025)
                                                     });
-                                            }
-                                        catch(err){
-                                            console.log(err);
-                                        }
-
-                                         try{
                                              var options = { filename: 'public/modules/datacollectors/' + fileName, format: 'Letter',orientation: 'landscape' };
-                                             pdf.create(renderedHtml, options).toFile(function(err, res) {
-                                                 if (err){
-                                                     console.log(res);
-                                                     httpResponse.send(500);
-                                                 }
-                                                 else {
-                                                     httpResponse.send(201,fileName);
-                                                 }
-                                             });
-                                         }
-                                      catch(err){
-                                          console.log(err);
-                                      }
+                                             //pdf.create(renderedHtml, options).toFile(function(err, res) {
+                                             //    if (err){
+                                             //        console.log(res);
+                                             //        httpResponse.send(500);
+                                             //    }
+                                             //    else {
+                                             //        httpResponse.send(201,fileName);
+                                             //    }
+                                             //});
                                     }
                                 });
 
@@ -1124,7 +1110,6 @@ module.exports = function(db) {
                                         console.log('err:  ' + err);
                                     }
                                     else {
-                                        try {
                                             console.log('update result:  ' + result);
 
                                             var fileName = 'quote_' + Math.random() + '.pdf';
@@ -1170,25 +1155,16 @@ module.exports = function(db) {
                                                 format: 'Letter',
                                                 orientation: 'landscape'
                                             };
-                                            pdf.create(renderedHtml, options).toFile(function (err, res) {
-                                                if (err) {
-                                                    console.log(res);
-                                                    httpResponse.send(500);
-                                                }
-                                                else {
-                                                    try {
-                                                        httpResponse.status(201).send(fileName);
-                                                    }
-                                                    catch(err){
-                                                        console.log('error sending httpResponse:  ' + err);
-                                                    }
-                                                }
-                                            });
-                                        } catch(err){
-                                            console.log(err);
+                                            //pdf.create(renderedHtml, options).toFile(function (err, res) {
+                                            //    if (err) {
+                                            //        console.log(res);
+                                            //        httpResponse.send(500);
+                                            //    }
+                                            //    else {
+                                            //            httpResponse.status(201).send(fileName);
+                                            //    }
+                                            //});
                                         }
-                                    }
-
                                 });
                         }
                         //db.close();
