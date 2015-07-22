@@ -1036,15 +1036,15 @@ module.exports = function(db) {
                                                         + electricBudget2021 + electricBudget2022 + electricBudget2023 + electricBudget2024 + electricBudget2025)
                                                     });
                                              var options = { filename: 'public/modules/datacollectors/' + fileName, format: 'Letter',orientation: 'landscape' };
-                                             //pdf.create(renderedHtml, options).toFile(function(err, res) {
-                                             //    if (err){
-                                             //        console.log(res);
-                                             //        httpResponse.send(500);
-                                             //    }
-                                             //    else {
-                                             //        httpResponse.send(201,fileName);
-                                             //    }
-                                             //});
+                                             pdf.create(renderedHtml, options).toFile(function(err, res) {
+                                                 if (err){
+                                                     console.log(res);
+                                                     //httpResponse.send(500);
+                                                 }
+                                                 else {
+                                                     //httpResponse.send(201,fileName);
+                                                 }
+                                             });
                                     }
                                 });
 
@@ -1155,15 +1155,15 @@ module.exports = function(db) {
                                                 format: 'Letter',
                                                 orientation: 'landscape'
                                             };
-                                            //pdf.create(renderedHtml, options).toFile(function (err, res) {
-                                            //    if (err) {
-                                            //        console.log(res);
-                                            //        httpResponse.send(500);
-                                            //    }
-                                            //    else {
-                                            //            httpResponse.status(201).send(fileName);
-                                            //    }
-                                            //});
+                                            pdf.create(renderedHtml, options).toFile(function (err, res) {
+                                                if (err) {
+                                                    console.log(res);
+                                                    //httpResponse.send(500);
+                                                }
+                                                else {
+                                                       // httpResponse.status(201).send(fileName);
+                                                }
+                                            });
                                         }
                                 });
                         }
