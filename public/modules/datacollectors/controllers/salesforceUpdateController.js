@@ -425,6 +425,7 @@ angular.module('datacollectors').controller('SalesforceUpdateController',
                 dcCountry: $scope.dcCountry,
                 dcSiteCode: $scope.dcSiteCode,
                 dcSku: $scope.dcSku,
+                exceptionRequest: $scope.exceptionRequest,
                 kwRequired_2016: $scope.kwRequired_2016,
                 kwRequired_2017: $scope.kwRequired_2017,
                 kwRequired_2018: $scope.kwRequired_2018,
@@ -471,6 +472,7 @@ angular.module('datacollectors').controller('SalesforceUpdateController',
                             {headers: { 'Accept': 'application/pdf' },
                                 responseType: 'arraybuffer' })
                             .success(function(data) {
+                                alert('Update Successful');
                                 var file = new Blob([data], {type: 'application/pdf'});
                                 var fileURL = URL.createObjectURL(file);
 

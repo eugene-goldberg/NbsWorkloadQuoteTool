@@ -945,6 +945,7 @@ module.exports = function(db) {
                                             "Industry": req.body.industry,
                                             "DcRegion": dcRegion,
                                             "Vendor": req.body.vendor,
+                                            "ExceptionRequest": req.body.exceptionRequest,
 
                                             "kwFY16": req.body.kwRequired_2016,
                                             "kwFY17": req.body.kwRequired_2017,
@@ -1082,6 +1083,7 @@ module.exports = function(db) {
                                     "Industry": req.body.industry,
                                     "DcRegion": dcRegion,
                                     "Vendor": req.body.vendor,
+                                    "ExceptionRequest": req.body.exceptionRequest,
 
                                     "DataCenters.$.cloudCompute":   req.body.cloudCompute,
                                     "DataCenters.$.bizCloudHc": req.body.bizCloudHc,
