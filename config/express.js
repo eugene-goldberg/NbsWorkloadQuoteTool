@@ -882,13 +882,15 @@ module.exports = function(db) {
 
                 dcInventoryCollection.find({DataCenterName: req.body.dcName}).toArray(function(err, docs) {
                     dcCountry = docs[0].DcCountry;
+
+                    dcInventoryCollection.find({DcCountry: dcCountry}).toArray(function(err, docs) {
+                        dcRegion = docs[0].DcRegion;
+                    });
                 });
 
                 console.log('dcCountry:  ' + dcCountry);
 
-                dcInventoryCollection.find({DcCountry: dcCountry}).toArray(function(err, docs) {
-                    dcRegion = docs[0].DcRegion;
-                });
+
 
                 collection.update(
                     {
