@@ -373,6 +373,31 @@ module.exports = function(db) {
         });
     });
 
+    app.get('/dc_by_region_by_vendor', function(req,res){
+        var url_parts = requestUrl.parse(req.url, true);
+        var query = url_parts.query;
+        var region = query.region;
+        var vendor = query.vendor;
+        MongoClient.connect(url, function (err, db) {
+            if (err) {
+                console.log('Unable to connect to the mongoDB server. Error:', err);
+            } else {
+                console.log('Connection established to', url);
+
+                var collection = db.collection('DcInventory');
+
+                collection.find({DcRegion: region,Vendor:vendor})
+                    .toArray(function(err, docs) {
+                        var dcNames = [];
+                        docs.forEach(function(doc){
+                            dcNames.push(doc.DataCenterName.replace('\n',''));
+                        });
+                        res.json(dcNames);
+                    });
+            }
+        });
+    });
+
     app.get('/users', function(req,res){
         MongoClient.connect(url, function (err, db) {
             var users = [];
@@ -845,6 +870,7 @@ module.exports = function(db) {
 
                 var userName;
                 var dcRegion;
+                var dcCountry;
                 var userCollection = db.collection('users');
                 userCollection.find({_id: ObjectID(req.session.passport.user)}).toArray(function(err, docs) {
                     userName = docs[0].username;
@@ -852,7 +878,13 @@ module.exports = function(db) {
 
                 var dcInventoryCollection = db.collection('DcInventory');
 
-                dcInventoryCollection.find({DcCountry: req.body.dcCountry}).toArray(function(err, docs) {
+                console.log('req.body.dcName' + req.body.dcName);
+
+                dcInventoryCollection.find({DataCenterName: req.body.dcName}).toArray(function(err, docs) {
+                    dcCountry = docs[0].DcCountry;
+                });
+
+                dcInventoryCollection.find({DcCountry: dcCountry}).toArray(function(err, docs) {
                     dcRegion = docs[0].DcRegion;
                 });
 
@@ -907,9 +939,12 @@ module.exports = function(db) {
                                         DataCenters:
                                         {
                                             "DataCenterName": req.body.dcName,
-                                            "DCCountry": req.body.dcCountry,
+                                            "DCCountry": dcCountry,
                                             "DCSiteCode": req.body.dcSiteCode,
                                             "DCSKU": req.body.dcSku,
+                                            "Industry": req.body.industry,
+                                            "DcRegion": dcRegion,
+                                            "Vendor": req.body.vendor,
 
                                             "kwFY16": req.body.kwRequired_2016,
                                             "kwFY17": req.body.kwRequired_2017,
@@ -962,7 +997,7 @@ module.exports = function(db) {
                                             renderedHtml = tmpl({
                                                 DcName: req.body.dcName,
                                                 DcRegion: dcRegion,
-                                                DcCountry: req.body.dcCountry,
+                                                DcCountry: dcCountry,
                                                 DcSiteCode: req.body.dcSiteCode,
                                                 OpportunityId:  req.body.opportunityId,
                                                 userName:  userName,
@@ -991,7 +1026,7 @@ module.exports = function(db) {
 
                                                 kWlTotal: (kWLeased2016 + kWLeased2017 + kWLeased2018 + kWLeased2019 + kWLeased2020 + kWLeased2021 + kWLeased2022 + kWLeased2023
                                                 + kWLeased2024 + kWLeased2025),
-                                                electricalBudgetTotal: (electricBudget2016 + electricBudget2017 + electricBudget2017 + electricBudget2019 + electricBudget2020
+                                                electricalBudgetTotal: (electricBudget2016 + electricBudget2017 + electricBudget2017 + electricBudget2018 + electricBudget2019 + electricBudget2020
                                                 + electricBudget2021 + electricBudget2022 + electricBudget2023 + electricBudget2024 + electricBudget2025)
                                             });
 
@@ -1041,9 +1076,12 @@ module.exports = function(db) {
                                     "DataCenters.$.cbFY24": req.body.cbRequired_2024,
                                     "DataCenters.$.cbFY25": req.body.cbRequired_2025,
 
-                                    "DataCenters.$.DCCountry": req.body.dcCountry,
+                                    "DataCenters.$.DCCountry": dcCountry,
                                     "DataCenters.$.DCSiteCode": req.body.dcSiteCode,
                                     "DataCenters.$.DCSKU": req.body.dcSku,
+                                    "Industry": req.body.industry,
+                                    "DcRegion": dcRegion,
+                                    "Vendor": req.body.vendor,
 
                                     "DataCenters.$.cloudCompute":   req.body.cloudCompute,
                                     "DataCenters.$.bizCloudHc": req.body.bizCloudHc,
@@ -1075,7 +1113,7 @@ module.exports = function(db) {
                                             renderedHtml = tmpl({
                                                 DcName: req.body.dcName,
                                                 DcRegion: dcRegion,
-                                                DcCountry: req.body.dcCountry,
+                                                DcCountry: dcCountry,
                                                 DcSiteCode: req.body.dcSiteCode,
                                                 OpportunityId:  req.body.opportunityId,
                                                 userName:  userName,
@@ -1104,7 +1142,7 @@ module.exports = function(db) {
 
                                                 kWlTotal: (kWLeased2016 + kWLeased2017 + kWLeased2018 + kWLeased2019 + kWLeased2020 + kWLeased2021 + kWLeased2022 + kWLeased2023
                                                 + kWLeased2024 + kWLeased2025),
-                                                electricalBudgetTotal: (electricBudget2016 + electricBudget2017 + electricBudget2017 + electricBudget2019 + electricBudget2020
+                                                electricalBudgetTotal: (electricBudget2016 + electricBudget2017 + electricBudget2017 + electricBudget2018 + electricBudget2019 + electricBudget2020
                                                 + electricBudget2021 + electricBudget2022 + electricBudget2023 + electricBudget2024 + electricBudget2025)
                                             });
                                         var options = { filename: 'public/modules/datacollectors/' + fileName, format: 'Letter',orientation: 'landscape' };

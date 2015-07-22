@@ -40,6 +40,8 @@ angular.module('datacollectors').controller('SalesforceUpdateController',
             }
         ];
 
+        $scope.dcList = [];
+
         $scope.dcRegions = [
             {
                 name: "Americas"
@@ -80,6 +82,8 @@ angular.module('datacollectors').controller('SalesforceUpdateController',
         ];
 
         $scope.opportunityIndustry;
+
+        $scope.dcCountry;
 
         $scope.isAdmin = false;
 
@@ -122,14 +126,14 @@ angular.module('datacollectors').controller('SalesforceUpdateController',
             });
         }
 
-        function initDcList(){
-            $http.get('/dc_inventory').success(function(response) {
-                console.log('found ' + response.length + ' records for DcInventory');
-                response.forEach(function(record){
-                    $scope.dcNames.push({name: record.DataCenterName, country: record.DcCountry, siteCode: record.DcSiteCode,address: record.DcAddress, region: record.DcRegion});
-                });
-            });
-        }
+        //function initDcList(){
+        //    $http.get('/dc_inventory').success(function(response) {
+        //        console.log('found ' + response.length + ' records for DcInventory');
+        //        response.forEach(function(record){
+        //            $scope.dcNames.push({name: record.DataCenterName, country: record.DcCountry, siteCode: record.DcSiteCode,address: record.DcAddress, region: record.DcRegion});
+        //        });
+        //    });
+        //}
 
         $scope.getOpportunityDetails = function(opportunityId){
             $http.get('/opportunities/?opportunityId=' + opportunityId).success(function(response) {
@@ -298,7 +302,7 @@ angular.module('datacollectors').controller('SalesforceUpdateController',
 
         initOpportunityIdList();
 
-        initDcList();
+        //initDcList();
 
         $scope.years = [
             {
@@ -338,27 +342,28 @@ angular.module('datacollectors').controller('SalesforceUpdateController',
 
         //$scope.selectedDcName = [{name: "dc", ticked: true}];
 
-        //$scope.$watch(function(scope) {return  $scope.selectedDcName },
-        //    function(newValue, oldValue) {
-        //        if(newValue[0]){
-        //            console.log('new value:  ' + newValue[0].name);
-        //        }
-        //
-        //        if(newValue[0]){
-        //            $scope.$parent.selectedName = newValue[0].name;
-        //            if($scope.selectedOpportunity){
-        //                if($scope.selectedOpportunity.length > 0){
-        //                    if($scope.selectedOpportunity[0].name){
-        //                        getDataCenterDetail($scope.selectedOpportunity[0].name,newValue[0].name);
-        //                    }
-        //                    else {
-        //                        getDataCenterDetail($scope.selectedOpportunityId,newValue[0].name);
-        //                    }
-        //                }
-        //            }
-        //        }
-        //    }
-        //);
+        $scope.$watch(function(scope) {return  $scope.selectedDataCenter },
+            function(newValue, oldValue) {
+                //if(newValue[0]){
+                //    console.log('new value:  ' + newValue[0].name);
+                //}
+                if(newValue){
+                if (newValue[0]) {
+                    $scope.$parent.selectedName = newValue[0].name;
+                    if ($scope.selectedOpportunity) {
+                        if ($scope.selectedOpportunity.length > 0) {
+                            if ($scope.selectedOpportunity[0].name) {
+                                getDataCenterDetail($scope.selectedOpportunity[0].name, newValue[0].name);
+                            }
+                            else {
+                                getDataCenterDetail($scope.selectedOpportunityId, newValue[0].name);
+                            }
+                        }
+                    }
+                }
+            }
+            }
+        );
 
         $scope.$watch(function(scope) {return  $scope.selectedOpportunity },
             function(newValue, oldValue) {
@@ -369,6 +374,28 @@ angular.module('datacollectors').controller('SalesforceUpdateController',
                     }
                 }
             }
+        );
+
+        $scope.$watch(function(scope) {return  $scope.selectedRegion },
+            function(newValue, oldValue) {
+                if(newValue){
+                    if(newValue[0]){
+                        console.log('Selected Region:  ' + newValue[0].name);
+                        $http.get('/dc_by_region_by_vendor/?region=' + newValue[0].name +'&vendor=' + $scope.dcVendor).success(function(response) {
+                                    response.forEach(function(dcName){
+                                        //if($scope.dcList.indexOf(dcName) == -1){
+                                        //    $scope.dcList.push({name:dcName});
+                                        //}
+                                        var result = $.grep($scope.dcList, function(e){ return e.name == dcName; });
+                                        if(result.length == 0){
+                                            $scope.dcList.push({name:dcName});
+                                            console.log('DC Name:  ' + dcName);
+                                        }
+                                    })
+                            })
+                        }
+                    }
+                }
         );
 
         $scope.selectedYear="";
@@ -391,8 +418,10 @@ angular.module('datacollectors').controller('SalesforceUpdateController',
                 solutionExecutiveName: $scope.solutionExecutiveName,
                 solutionArchitectName: $scope.solutionArchitectName,
                 noDcInTheDeal: $scope.noDcInTheDeal,
-                dcName: $scope.$parent.selectedName,
-                dcRegion: $scope.selectedDcRegion,
+                industry: $scope.selectedIndustry[0].name,
+                dcName: $scope.selectedDataCenter[0].name,
+                dcRegion: $scope.selectedRegion[0].name,
+                vendor: $scope.dcVendor,
                 dcCountry: $scope.dcCountry,
                 dcSiteCode: $scope.dcSiteCode,
                 dcSku: $scope.dcSku,
