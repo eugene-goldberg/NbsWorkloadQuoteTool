@@ -3,7 +3,7 @@
 module.exports = {
 	db: 'mongodb://localhost/datamanager-03-test',
 	app: {
-		title: 'NBS Workload Quote Tool'
+		title: 'Workload Quote Tool'
 	},
 	facebook: {
 		clientID: process.env.FACEBOOK_ID || 'asdf',

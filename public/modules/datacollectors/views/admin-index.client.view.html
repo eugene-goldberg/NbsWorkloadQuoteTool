@@ -11,15 +11,18 @@
                         <legend><strong>Users</strong> </legend>
                             <div  dx-data-grid="usersGridOptions"></div>
                                 <br>
-                        <div class="col-sm-3">
+                        <div class="col-sm-4">
                         <button ng-click="grantSelectedRolesToSelectedUsers()">Grant selected Roles to selected Users</button>
                         </div>
                         <div class="col-sm-3">
                             <button ng-click="removeSelectedUsers()">Remove selected Users</button>
                         </div>
                         <br>
+                        <div class="col-sm-12">
+                            <br>
                         <legend><strong>Roles</strong> </legend>
                             <div  dx-data-grid="rolesGridOptions"></div>
+                        </div>
                                 <br>
                         <legend><strong>Access Requests</strong> </legend>
                             <div  dx-data-grid="accessRequestsGridOptions"></div>
@@ -27,12 +30,67 @@
                         <div class="col-sm-3">
                             <button ng-click="grantRequestedRoles()">Grant Requested Roles</button>
                         </div>
-                        <div class="col-sm-3">
+                        <div class="col-sm-4">
                             <button ng-click="removeSelectedAccessRequest()">Remove selected access request</button>
                         </div>
 
+                        <div class="col-sm-5">
+                            <button ng-click="">Grant additional role</button>
+                        </div>
+                        <div class="col-sm-12">
+                        <br>
+                        <legend><strong>Add Users</strong> </legend>
+                        </div>
+
+                        <div class="col-sm-4">
+                            <label for="firstName">First Name</label>
+                            <input type="text" required id="firstName" name="firstName" class="form-control" data-ng-model="credentials.firstName" placeholder="First Name">
+                            <label for="lastName">Last Name</label>
+                            <input type="text" id="lastName" name="lastName" class="form-control" data-ng-model="credentials.lastName" placeholder="Last Name">
+                            <button style="margin-top: 20px;margin-bottom: 20px" type="submit" class="btn" ng-click="addUser()">Add User</button>
+                        </div>
+
+                            <div class="col-sm-4">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" class="form-control" data-ng-model="credentials.email" placeholder="Email">
+                            <label for="username">Username</label>
+                            <input type="text" id="username" name="username" class="form-control" data-ng-model="credentials.username" placeholder="Username">
+                            </div>
+
+                        <div class="col-sm-4">
+                        <label for="password">Password</label>
+                        <input type="password" id="password" name="password" class="form-control" data-ng-model="credentials.password" placeholder="Password">
+                        </div>
                     </div>
                 </form>
+
+                                <!--<form name="userForm" data-ng-submit="addUser()" novalidate autocomplete="off">-->
+                                    <!--<fieldset>-->
+                                            <!--<div class="col-sm-3">-->
+                                                    <!--<label for="firstName">First Name</label>-->
+                                                    <!--<input type="text" required id="firstName" name="firstName" class="form-control" data-ng-model="credentials.firstName" placeholder="First Name">-->
+                                                    <!--<label for="lastName">Last Name</label>-->
+                                                    <!--<input type="text" id="lastName" name="lastName" class="form-control" data-ng-model="credentials.lastName" placeholder="Last Name">-->
+                                            <!--</div>-->
+                                            <!--<div class="col-sm-3">-->
+                                                    <!--<label for="email">Email</label>-->
+                                                    <!--<input type="email" id="email" name="email" class="form-control" data-ng-model="credentials.email" placeholder="Email">-->
+                                                    <!--<label for="username">Username</label>-->
+                                                    <!--<input type="text" id="username" name="username" class="form-control" data-ng-model="credentials.username" placeholder="Username">-->
+                                            <!--</div>-->
+                                                <!--<div class="col-sm-3">-->
+                                                    <!--<label for="password">Password</label>-->
+                                                    <!--<input type="password" id="password" name="password" class="form-control" data-ng-model="credentials.password" placeholder="Password">-->
+                                                <!--</div>-->
+                                                <!--<div class="text-center form-group">-->
+                                                    <!--<button type="submit" class="btn btn-large btn-primary">Add User</button>&nbsp; or&nbsp;-->
+                                                    <!--<a href="/#!/signin" class="show-signup">Sign in</a>-->
+                                                <!--</div>-->
+                                        <!--<div data-ng-show="error" class="text-center text-danger">-->
+                                            <!--<strong data-ng-bind="error"></strong>-->
+                                        <!--</div>-->
+                                    <!--</fieldset>-->
+                                <!--</form>-->
         </tab>
         <tab>
             <br>

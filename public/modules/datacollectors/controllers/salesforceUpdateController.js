@@ -154,6 +154,7 @@ angular.module('datacollectors').controller('SalesforceUpdateController',
                 $scope.industries.forEach(function(industry){
                    if(industry.name === $scope.opportunityIndustry){
                        industry.ticked = true;
+                       $scope.industry = industry.name;
                    }
                 });
 
@@ -189,6 +190,7 @@ angular.module('datacollectors').controller('SalesforceUpdateController',
                     $scope.industries.forEach(function(industry){
                         if(industry.name === $scope.opportunityIndustry){
                             industry.ticked = true;
+                            $scope.industry = industry.name;
                         }
                     });
 
@@ -423,7 +425,7 @@ angular.module('datacollectors').controller('SalesforceUpdateController',
                 solutionExecutiveName: $scope.solutionExecutiveName,
                 solutionArchitectName: $scope.solutionArchitectName,
                 noDcInTheDeal: $scope.noDcInTheDeal,
-                industry: $scope.selectedIndustry[0].name,
+                industry: $scope.industry,
                 dcName: $scope.selectedDataCenter[0].name,
                 dcRegion: $scope.selectedRegion[0].name,
                 vendor: $scope.dcVendor,

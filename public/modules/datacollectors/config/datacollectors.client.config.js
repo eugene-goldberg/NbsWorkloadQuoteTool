@@ -6,7 +6,7 @@ angular.module('datacollectors').run(['Menus',
 		Menus.addMenuItem('topbar', 'Data Management', 'datacollectors', 'dropdown', '/datacollectors(/create)?');
 		//Menus.addSubMenuItem('topbar', 'datacollectors', 'Upload Documents', 'document-upload',null,true,['admin','document-upload']);
 		//Menus.addSubMenuItem('topbar','datacollectors','Data Explorer','dataexplorer',null,true,['admin','data']);
-		Menus.addSubMenuItem('topbar', 'datacollectors', 'NBS Workload Quote', 'sfupdate',null,true,['sfupdate','admin']);
+		Menus.addSubMenuItem('topbar', 'datacollectors', 'New Business Workload Quote', 'sfupdate',null,true,['sfupdate','admin']);
         Menus.addSubMenuItem('topbar', 'datacollectors', 'Internal Workload Quote', 'internal-demand',null,true,['admin']);
         //Menus.addSubMenuItem('topbar', 'datacollectors', 'Update Playcards Data', 'update-playcard',null,true,['pcupdate','admin']);
         //Menus.addSubMenuItem('topbar', 'datacollectors', 'View Playcards', 'view-playcard',null,true,['admin','pcviewer']);

@@ -59,6 +59,10 @@
                                     <label for="opportunityOwner">Opportunity Owner</label>
                                     <input id="opportunityOwner" name="opportunityOwner" type="text" placeholder="owner" class="form-control" required ng-model="opportunityOwner"/>
                                 </div>
+                                <div class="col-sm-3">
+                                    <label for="industry">Industry</label>
+                                    <input id="industry" name="industry" type="text" placeholder="industry" class="form-control" required ng-model="industry"/>
+                                </div>
                             </div>
 
                             <div>
@@ -81,12 +85,25 @@
                             </div>
                                     <div class="row">
                                         <br>
-                                        <div class="col-sm-3">
-                                            <!--<label for="dcName">Data Center Name</label>-->
-                                            <!--<div id="dcName">-->
+                                        <!--<div class="col-sm-3">-->
+                                            <!--&lt;!&ndash;<label for="dcName">Data Center Name</label>&ndash;&gt;-->
+                                            <!--&lt;!&ndash;<div id="dcName">&ndash;&gt;-->
+                                                <!--&lt;!&ndash;<isteven-multi-select&ndash;&gt;-->
+                                                        <!--&lt;!&ndash;input-model="dcNames"&ndash;&gt;-->
+                                                        <!--&lt;!&ndash;output-model="selectedDcName"&ndash;&gt;-->
+                                                        <!--&lt;!&ndash;button-label="icon name"&ndash;&gt;-->
+                                                        <!--&lt;!&ndash;item-label="icon name maker"&ndash;&gt;-->
+                                                        <!--&lt;!&ndash;tick-property="ticked"&ndash;&gt;-->
+                                                        <!--&lt;!&ndash;selection-mode="single"&ndash;&gt;-->
+                                                        <!--&lt;!&ndash;>-->
+                                                <!--&lt;!&ndash;</isteven-multi-select>&ndash;&gt;-->
+                                            <!--&lt;!&ndash;</div>&ndash;&gt;-->
+
+                                            <!--<label for="industries">Industries</label>-->
+                                            <!--<div id="industries">-->
                                                 <!--<isteven-multi-select-->
-                                                        <!--input-model="dcNames"-->
-                                                        <!--output-model="selectedDcName"-->
+                                                        <!--input-model="industries"-->
+                                                        <!--output-model="selectedIndustry"-->
                                                         <!--button-label="icon name"-->
                                                         <!--item-label="icon name maker"-->
                                                         <!--tick-property="ticked"-->
@@ -94,20 +111,7 @@
                                                         <!-->
                                                 <!--</isteven-multi-select>-->
                                             <!--</div>-->
-
-                                            <label for="industries">Industries</label>
-                                            <div id="industries">
-                                                <isteven-multi-select
-                                                        input-model="industries"
-                                                        output-model="selectedIndustry"
-                                                        button-label="icon name"
-                                                        item-label="icon name maker"
-                                                        tick-property="ticked"
-                                                        selection-mode="single"
-                                                        >
-                                                </isteven-multi-select>
-                                            </div>
-                                        </div>
+                                        <!--</div>-->
 
                                             <!--<div class="col-sm-3">-->
                                             <!--<label for="dcCountry">Data Center Country</label>-->

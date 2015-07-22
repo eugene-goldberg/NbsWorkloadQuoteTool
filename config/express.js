@@ -899,7 +899,8 @@ module.exports = function(db) {
                         OpportunityOwner: req.body.opportunityOwner,
                         SolutionExecutiveName: req.body.solutionExecutiveName,
                         SolutionArchitectName: req.body.solutionArchitectName,
-                        NoDcInTheDeal: req.body.noDcInTheDeal
+                        NoDcInTheDeal: req.body.noDcInTheDeal,
+                        Industry: req.body.industry
                     }
 
                     },
@@ -942,7 +943,6 @@ module.exports = function(db) {
                                             "DCCountry": dcCountry,
                                             "DCSiteCode": req.body.dcSiteCode,
                                             "DCSKU": req.body.dcSku,
-                                            "Industry": req.body.industry,
                                             "DcRegion": dcRegion,
                                             "Vendor": req.body.vendor,
                                             "ExceptionRequest": req.body.exceptionRequest,

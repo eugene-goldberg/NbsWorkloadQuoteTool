@@ -2,7 +2,7 @@
 
 module.exports = {
 	app: {
-		title: 'NBS Workload Quote Tool',
+		title: 'Workload Quote Tool',
 		description: 'Full-Stack JavaScript with MongoDB, Express, AngularJS, and Node.js',
 		keywords: 'MongoDB, Express, AngularJS, Node.js'
 	},
