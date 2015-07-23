@@ -126,14 +126,14 @@ angular.module('datacollectors').controller('SalesforceUpdateController',
             });
         }
 
-        //function initDcList(){
-        //    $http.get('/dc_inventory').success(function(response) {
-        //        console.log('found ' + response.length + ' records for DcInventory');
-        //        response.forEach(function(record){
-        //            $scope.dcNames.push({name: record.DataCenterName, country: record.DcCountry, siteCode: record.DcSiteCode,address: record.DcAddress, region: record.DcRegion});
-        //        });
-        //    });
-        //}
+        function initDcList(){
+            $http.get('/dc_inventory').success(function(response) {
+                console.log('found ' + response.length + ' records for DcInventory');
+                response.forEach(function(record){
+                    $scope.dcNames.push({name: record.DataCenterName, country: record.DcCountry, siteCode: record.DcSiteCode,address: record.DcAddress, region: record.DcRegion});
+                });
+            });
+        }
 
         $scope.getOpportunityDetails = function(opportunityId){
             $http.get('/opportunities/?opportunityId=' + opportunityId).success(function(response) {
@@ -317,7 +317,7 @@ angular.module('datacollectors').controller('SalesforceUpdateController',
 
         initOpportunityIdList();
 
-        //initDcList();
+        initDcList();
 
         $scope.years = [
             {
