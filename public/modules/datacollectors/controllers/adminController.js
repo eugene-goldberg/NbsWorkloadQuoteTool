@@ -153,12 +153,21 @@ angular.module('datacollectors').controller('AdminController', ['$scope', '$http
         };
 
         $scope.addUser = function() {
-            $http.post('/auth/signup', $scope.credentials).success(function(response) {
+            $http.post('/auth/signup', {firstName: $scope.userFirstName,
+                lastName: $scope.userLastName,
+                username: $scope.userUsername,
+                password: $scope.userPassword,
+                email: $scope.userEmail}).success(function(response) {
                 // If successful we assign the response to the global user model
-                $scope.authentication.user = response;
-
+                //$scope.authentication.user = response;
+                alert('user successfully created');
+                $scope.userFirstName = '';
+                $scope.userLastName = '';
+                $scope.userUsername = '';
+                $scope.userPassword = '';
+                $scope.userEmail = '';
                 // And redirect to the index page
-                $location.path('/');
+                //$location.path('/');
             }).error(function(response) {
                 $scope.error = response.message;
             });

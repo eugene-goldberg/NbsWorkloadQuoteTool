@@ -37,78 +37,45 @@
                         <div class="col-sm-5">
                             <button ng-click="">Grant additional role</button>
                         </div>
+                    </div>
+                </form>
+        </tab>
+        <tab>
+            <tab-heading> Add Users</tab-heading>
+            <br>
+            <div ng-controller="AdminController">
+            <form name="role-admin-form">
+                <div class="form-group">
+                    <fieldset>
                         <div class="col-sm-12">
-                        <br>
-                        <legend><strong>Add Users</strong> </legend>
+                            <br>
+                            <legend><strong>Add Users</strong> </legend>
                         </div>
 
                         <div class="col-sm-4">
                             <label for="firstName">First Name</label>
-                            <input type="text" required id="firstName" name="firstName" class="form-control" data-ng-model="credentials.firstName" placeholder="First Name">
+                            <input type="text" required id="firstName" name="firstName" class="form-control" ng-model="userFirstName" placeholder="First Name">
                             <label for="lastName">Last Name</label>
-                            <input type="text" id="lastName" name="lastName" class="form-control" data-ng-model="credentials.lastName" placeholder="Last Name">
+                            <input type="text" id="lastName" name="lastName" class="form-control" ng-model="userLastName" placeholder="Last Name">
                             <button style="margin-top: 20px;margin-bottom: 20px" type="submit" class="btn" ng-click="addUser()">Add User</button>
                         </div>
 
-                            <div class="col-sm-4">
+                        <div class="col-sm-4">
                             <label for="email">Email</label>
-                            <input type="email" id="email" name="email" class="form-control" data-ng-model="credentials.email" placeholder="Email">
+                            <input type="email" id="email" name="email" class="form-control" ng-model="userEmail" placeholder="Email">
                             <label for="username">Username</label>
-                            <input type="text" id="username" name="username" class="form-control" data-ng-model="credentials.username" placeholder="Username">
-                            </div>
+                            <input type="text" id="username" name="username" class="form-control" ng-model="userUsername" placeholder="Username">
+                        </div>
 
                         <div class="col-sm-4">
-                        <label for="password">Password</label>
-                        <input type="password" id="password" name="password" class="form-control" data-ng-model="credentials.password" placeholder="Password">
+                            <label for="password">Password</label>
+                            <input type="password" id="password" name="password" class="form-control" data-ng-model="userPassword" placeholder="Password">
                         </div>
-                    </div>
-                </form>
 
-                                <!--<form name="userForm" data-ng-submit="addUser()" novalidate autocomplete="off">-->
-                                    <!--<fieldset>-->
-                                            <!--<div class="col-sm-3">-->
-                                                    <!--<label for="firstName">First Name</label>-->
-                                                    <!--<input type="text" required id="firstName" name="firstName" class="form-control" data-ng-model="credentials.firstName" placeholder="First Name">-->
-                                                    <!--<label for="lastName">Last Name</label>-->
-                                                    <!--<input type="text" id="lastName" name="lastName" class="form-control" data-ng-model="credentials.lastName" placeholder="Last Name">-->
-                                            <!--</div>-->
-                                            <!--<div class="col-sm-3">-->
-                                                    <!--<label for="email">Email</label>-->
-                                                    <!--<input type="email" id="email" name="email" class="form-control" data-ng-model="credentials.email" placeholder="Email">-->
-                                                    <!--<label for="username">Username</label>-->
-                                                    <!--<input type="text" id="username" name="username" class="form-control" data-ng-model="credentials.username" placeholder="Username">-->
-                                            <!--</div>-->
-                                                <!--<div class="col-sm-3">-->
-                                                    <!--<label for="password">Password</label>-->
-                                                    <!--<input type="password" id="password" name="password" class="form-control" data-ng-model="credentials.password" placeholder="Password">-->
-                                                <!--</div>-->
-                                                <!--<div class="text-center form-group">-->
-                                                    <!--<button type="submit" class="btn btn-large btn-primary">Add User</button>&nbsp; or&nbsp;-->
-                                                    <!--<a href="/#!/signin" class="show-signup">Sign in</a>-->
-                                                <!--</div>-->
-                                        <!--<div data-ng-show="error" class="text-center text-danger">-->
-                                            <!--<strong data-ng-bind="error"></strong>-->
-                                        <!--</div>-->
-                                    <!--</fieldset>-->
-                                <!--</form>-->
-        </tab>
-        <tab>
-            <br>
-            <tab-heading> Application Settings</tab-heading>
-            <form name="role-admin-form">
-                <div class="form-group">
-                    <fieldset>
-                        <legend><strong>Settings</strong> </legend>
-                        <div class="col-sm-6">
-                            <label for="roleName">Setting 1</label>
-                            <input id="roleName" name="roleName" type="text" class="form-control" ng-model="roleName"/>
-
-                            <label for="roleDescription">Setting 2</label>
-                            <input id="roleDescription" name="roleDescription" type="text" class="form-control" ng-model="roleDescription"/>
-                        </div>
                     </fieldset>
                 </div>
             </form>
+            </div>
         </tab>
         <tab>
             <tab-heading>Playcards Automation</tab-heading>

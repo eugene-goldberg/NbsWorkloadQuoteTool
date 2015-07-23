@@ -825,8 +825,8 @@ module.exports = function(db) {
 
     app.get('/internal_dc_quote', function(req, res){
         console.log('_parsedUrl.query:  ' + req._parsedUrl.query);
-        var file = fs.createReadStream('public/modules/datacollectors/' + req._parsedUrl.query.split('=')[1]);
-        var stat = fs.statSync('public/modules/datacollectors/' + req._parsedUrl.query.split('=')[1]);
+        var file = fs.createReadStream('/tmp/' + req._parsedUrl.query.split('=')[1]);
+        var stat = fs.statSync('/tmp/' + req._parsedUrl.query.split('=')[1]);
         res.setHeader('Content-Length', stat.size);
         res.setHeader('Content-Type', 'application/pdf');
         res.setHeader('Content-Disposition', 'attachment; filename=quote.pdf');
@@ -1246,7 +1246,7 @@ module.exports = function(db) {
                     + electricBudget2021 + electricBudget2022 + electricBudget2023 + electricBudget2024 + electricBudget2025)
                 });
 
-            var options = { filename: 'public/modules/datacollectors/' + fileName, format: 'Letter' };
+            var options = { filename: '/tmp/' + fileName, format: 'Letter' };
             pdf.create(renderedHtml, options).toFile(function(err, res) {
                 if (err){
                     return console.log(err);
