@@ -154,7 +154,12 @@ angular.module('datacollectors').controller('SalesforceUpdateController',
                 $scope.industries.forEach(function(industry){
                    if(industry.name === $scope.opportunityIndustry){
                        industry.ticked = true;
-                       $scope.industry = industry.name;
+                       if(industry.name){
+                           $scope.industry = industry.name;
+                       }
+                       else {
+                           $scope.industry = 'unknown / unmatched';
+                       }
                    }
                 });
 
@@ -192,6 +197,9 @@ angular.module('datacollectors').controller('SalesforceUpdateController',
                             industry.ticked = true;
                             $scope.industry = industry.name;
                         }
+                        //else {
+                        //    $scope.industry = 'unknown / unmatched';
+                        //}
                     });
 
                 //Get the Dc Vendor mapping for selected Industry:

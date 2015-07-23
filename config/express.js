@@ -367,7 +367,13 @@ module.exports = function(db) {
 
                 collection.find({Industry: query.industry})
                     .toArray(function(err, docs) {
-                        res.json(docs[0].DcVendor);
+                        if(docs.length > 0){
+                            res.json(docs[0].DcVendor);
+                        }
+                        else {
+                            res.json('QTS');
+                        }
+
                     });
             }
         });
