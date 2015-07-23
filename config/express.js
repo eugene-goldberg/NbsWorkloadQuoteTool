@@ -1157,15 +1157,21 @@ module.exports = function(db) {
                                                 format: 'Letter',
                                                 orientation: 'landscape'
                                             };
+                                        try{
                                             pdf.create(renderedHtml, options).toFile(function (err, res) {
                                                 if (err) {
                                                     console.log(res);
                                                     //httpResponse.send(500);
                                                 }
                                                 else {
-                                                       // httpResponse.status(201).send(fileName);
+                                                    // httpResponse.status(201).send(fileName);
                                                 }
                                             });
+                                        }
+                                        catch(err){
+                                            console.log('error creating pdf: ' + err);
+                                        }
+
                                         }
                                 });
                         }
