@@ -2,3 +2,4 @@ Procfile
 fig.yml
 uploads/
 .idea/
+node_modules/

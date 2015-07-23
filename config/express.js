@@ -1035,15 +1035,15 @@ module.exports = function(db) {
                                                         electricalBudgetTotal: (electricBudget2016 + electricBudget2017 + electricBudget2017 + electricBudget2018 + electricBudget2019 + electricBudget2020
                                                         + electricBudget2021 + electricBudget2022 + electricBudget2023 + electricBudget2024 + electricBudget2025)
                                                     });
-                                             var options = { filename: 'public/modules/datacollectors/' + fileName, format: 'Letter',orientation: 'landscape' };
-                                        console.log('line 1039 attempting to create pdf at: ' + 'public/modules/datacollectors/' + fileName);
+                                             var options = { filename: '/tmp/' + fileName, format: 'Letter',orientation: 'landscape' };
+                                        console.log('line 1039 attempting to create pdf at: ' + '/tmp/' + fileName);
                                              pdf.create(renderedHtml, options).toFile(function(err, res) {
                                                  if (err){
                                                      console.log(res);
-                                                     //httpResponse.send(500);
+                                                     httpResponse.send(500);
                                                  }
                                                  else {
-                                                     //httpResponse.send(201,fileName);
+                                                     httpResponse.send(201,fileName);
                                                  }
                                              });
                                     }
@@ -1157,21 +1157,15 @@ module.exports = function(db) {
                                                 format: 'Letter',
                                                 orientation: 'landscape'
                                             };
-                                        try{
                                             pdf.create(renderedHtml, options).toFile(function (err, res) {
                                                 if (err) {
                                                     console.log(res);
-                                                    //httpResponse.send(500);
+                                                    httpResponse.send(500);
                                                 }
                                                 else {
-                                                    // httpResponse.status(201).send(fileName);
+                                                    httpResponse.status(201).send(fileName);
                                                 }
                                             });
-                                        }
-                                        catch(err){
-                                            console.log('error creating pdf: ' + err);
-                                        }
-
                                         }
                                 });
                         }
