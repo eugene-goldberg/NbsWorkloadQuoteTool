@@ -192,6 +192,9 @@ angular.module('datacollectors').controller('SalesforceUpdateController',
                     $scope.noDcInTheDeal = response.NoDcInTheDeal;
                     $scope.opportunityIndustry = response.Industry;
 
+                    $scope.computeCheckboxModel.isProvidingDr = response.IsProvidingDr;
+                    $scope.drProvidedFor = response.DrProvidedFor;
+
                     $scope.industries.forEach(function(industry){
                         if(industry.name === $scope.opportunityIndustry){
                             industry.ticked = true;
@@ -255,6 +258,9 @@ angular.module('datacollectors').controller('SalesforceUpdateController',
             $scope.computeCheckboxModel.serviceManagement = false;
             $scope.computeCheckboxModel.lan = false;
             $scope.computeCheckboxModel.wan = false;
+            $scope.computeCheckboxModel.isProvidingDr = false;
+
+            $scope.drProvidedFor = '';
 
             $http.get('/salesforce_dc_data/?opportunityId=' + opportunityId +'&dcName=' + dcName).success(function(response) {
 
@@ -306,6 +312,8 @@ angular.module('datacollectors').controller('SalesforceUpdateController',
                $scope.computeCheckboxModel.serviceManagement = response.serviceManagement;
                $scope.computeCheckboxModel.lan = response.lan;
                $scope.computeCheckboxModel.wan = response.wan;
+                $scope.computeCheckboxModel.isProvidingDr = response.IsProvidingDr;
+                $scope.drProvidedFor = response.DrProvidedFor;
             }
 
             });
@@ -475,7 +483,9 @@ angular.module('datacollectors').controller('SalesforceUpdateController',
                 cyber:  $scope.computeCheckboxModel.cyber,
                 serviceManagement: $scope.computeCheckboxModel.serviceManagement,
                 lan:    $scope.computeCheckboxModel.lan,
-                wan:    $scope.computeCheckboxModel.wan
+                wan:    $scope.computeCheckboxModel.wan,
+                isProvidingDr: $scope.computeCheckboxModel.isProvidingDr,
+                drProvidedFor: $scope.drProvidedFor
             };
 
             var json = angular.toJson(postData);
@@ -571,7 +581,8 @@ angular.module('datacollectors').controller('SalesforceUpdateController',
             cyber:  false,
             serviceManagement:  false,
             lan:    false,
-            wan:    false
+            wan:    false,
+            isProvidingDr:  false
         };
     }
 ]);

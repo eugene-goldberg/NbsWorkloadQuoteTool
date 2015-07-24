@@ -343,6 +343,8 @@ module.exports = function(db) {
                                     opportunityDetail.DCCountry = doc['DCCountry'];
                                     opportunityDetail.DCSiteCode = doc['DCSiteCode'];
                                     opportunityDetail.DCSKU = doc['DCSKU'];
+                                    opportunityDetail.IsProvidingDr = doc['IsProvidingDr'];
+                                    opportunityDetail.DrProvidedFor = doc['DrProvidedFor'];
 
                                     res.json(opportunityDetail);
                                     assert.equal(null, err);
@@ -991,7 +993,9 @@ module.exports = function(db) {
                                             cyber:  req.body.cyber,
                                             serviceManagement: req.body.serviceManagement,
                                             lan:    req.body.lan,
-                                            wan:    req.body.wan
+                                            wan:    req.body.wan,
+                                            IsProvidingDr: req.body.isProvidingDr,
+                                            DrProvidedFor: req.body.drProvidedFor
                                         }
                                     }
                                 },
@@ -1107,7 +1111,9 @@ module.exports = function(db) {
                                     "DataCenters.$.cyber":  req.body.cyber,
                                     "DataCenters.$.serviceManagement": req.body.serviceManagement,
                                     "DataCenters.$.lan":    req.body.lan,
-                                    "DataCenters.$.wan":    req.body.wan
+                                    "DataCenters.$.wan":    req.body.wan,
+                                    "DataCenters.$.IsProvidingDr": req.body.isProvidingDr,
+                                    "DataCenters.$.DrProvidedFor": req.body.drProvidedFor
                                 }
 
                                 },
