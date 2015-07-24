@@ -867,6 +867,11 @@ module.exports = function(db) {
             var electricBudget2024 = Math.round((((Number(req.body.kwRequired_2024) * 720) * 12) * 0.09));
             var electricBudget2025 = Math.round((((Number(req.body.kwRequired_2025) * 720) * 12) * 0.09));
 
+            var kWlTotal = (kWLeased2016 + kWLeased2017 + kWLeased2018 + kWLeased2019 + kWLeased2020 + kWLeased2021 + kWLeased2022 + kWLeased2023
+        + kWLeased2024 + kWLeased2025);
+            var electricalBudgetTotal = (electricBudget2016 + electricBudget2017 + electricBudget2017 + electricBudget2018 + electricBudget2019 + electricBudget2020
+        + electricBudget2021 + electricBudget2022 + electricBudget2023 + electricBudget2024 + electricBudget2025);
+
         var httpResponse = res;
 
         MongoClient.connect(url, function (err, db) {
@@ -995,7 +1000,9 @@ module.exports = function(db) {
                                             lan:    req.body.lan,
                                             wan:    req.body.wan,
                                             IsProvidingDr: req.body.isProvidingDr,
-                                            DrProvidedFor: req.body.drProvidedFor
+                                            DrProvidedFor: req.body.drProvidedFor,
+                                            KwlTotal:   kWlTotal,
+                                            ElBudgetTotal: electricalBudgetTotal
                                         }
                                     }
                                 },
@@ -1113,7 +1120,9 @@ module.exports = function(db) {
                                     "DataCenters.$.lan":    req.body.lan,
                                     "DataCenters.$.wan":    req.body.wan,
                                     "DataCenters.$.IsProvidingDr": req.body.isProvidingDr,
-                                    "DataCenters.$.DrProvidedFor": req.body.drProvidedFor
+                                    "DataCenters.$.DrProvidedFor": req.body.drProvidedFor,
+                                    "DataCenters.$.KwlTotal":   kWlTotal,
+                                    "DataCenters.$.ElBudgetTotal": electricalBudgetTotal
                                 }
 
                                 },
@@ -1214,6 +1223,11 @@ module.exports = function(db) {
         var electricBudget2023 = Math.round((((Number(req.body.kwRequired_2023) * 720) * 12) * 0.09));
         var electricBudget2024 = Math.round((((Number(req.body.kwRequired_2024) * 720) * 12) * 0.09));
         var electricBudget2025 = Math.round((((Number(req.body.kwRequired_2025) * 720) * 12) * 0.09));
+
+        var kWlTotal = (kWLeased2016 + kWLeased2017 + kWLeased2018 + kWLeased2019 + kWLeased2020 + kWLeased2021 + kWLeased2022 + kWLeased2023
+        + kWLeased2024 + kWLeased2025);
+        var electricalBudgetTotal = (electricBudget2016 + electricBudget2017 + electricBudget2017 + electricBudget2018 + electricBudget2019 + electricBudget2020
+        + electricBudget2021 + electricBudget2022 + electricBudget2023 + electricBudget2024 + electricBudget2025);
 
         ///////////////Update Finished Handler
 
@@ -1332,7 +1346,9 @@ module.exports = function(db) {
                         lan:    req.body.lan,
                         wan:    req.body.wan,
                         IsProvidingDr: req.body.isProvidingDr,
-                        DrProvidedFor: req.body.drProvidedFor
+                        DrProvidedFor: req.body.drProvidedFor,
+                        KwlTotal:   kWlTotal,
+                        ElBudgetTotal: electricalBudgetTotal,
                     }
 
                     },
