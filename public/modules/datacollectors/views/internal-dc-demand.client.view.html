@@ -96,6 +96,22 @@
                         </div>
                     </div>
 
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <h5>Disaster Recovery Information</h5>
+                        </div>
+
+                        <div class="col-sm-6">
+                            <label for="isProvidingDr">This DC is providing DR services</label>
+                            <input id="isProvidingDr" type="checkbox" ng-model="computeCheckboxModel.isProvidingDr">
+                        </div>
+
+                        <div class="col-sm-6">
+                            <label for="drProvidedFor">DR services are provided for</label>
+                            <input id="drProvidedFor" type="text" ng-model="drProvidedFor">
+                        </div>
+                    </div>
+
                     <div>
                         <br>
                         <h4>Compute infrastructure for this Data Center</h4>

@@ -1330,8 +1330,9 @@ module.exports = function(db) {
                         cyber:  req.body.cyber,
                         serviceManagement: req.body.serviceManagement,
                         lan:    req.body.lan,
-                        wan:    req.body.wan
-
+                        wan:    req.body.wan,
+                        IsProvidingDr: req.body.isProvidingDr,
+                        DrProvidedFor: req.body.drProvidedFor
                     }
 
                     },

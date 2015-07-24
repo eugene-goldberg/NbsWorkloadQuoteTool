@@ -80,6 +80,9 @@ angular.module('datacollectors').controller('InternalDcDemandController',
                 $scope.computeCheckboxModel.serviceManagement = false;
                 $scope.computeCheckboxModel.lan = false;
                 $scope.computeCheckboxModel.wan = false;
+                $scope.computeCheckboxModel.isProvidingDr = false;
+
+                $scope.drProvidedFor = '';
             }
 
             $scope.$watch(function(scope) {return  $scope.selectedDcName },
@@ -147,6 +150,8 @@ angular.module('datacollectors').controller('InternalDcDemandController',
                                 $scope.computeCheckboxModel.serviceManagement = response[0].serviceManagement;
                                 $scope.computeCheckboxModel.lan = response[0].lan;
                                 $scope.computeCheckboxModel.wan = response[0].wan;
+                                $scope.computeCheckboxModel.isProvidingDr = response[0].IsProvidingDr;
+                                $scope.drProvidedFor = response[0].DrProvidedFor;
                             });
                         }
                     }
@@ -209,7 +214,9 @@ angular.module('datacollectors').controller('InternalDcDemandController',
                         cyber:  $scope.computeCheckboxModel.cyber,
                         serviceManagement: $scope.computeCheckboxModel.serviceManagement,
                         lan:    $scope.computeCheckboxModel.lan,
-                        wan:    $scope.computeCheckboxModel.wan
+                        wan:    $scope.computeCheckboxModel.wan,
+                        isProvidingDr: $scope.computeCheckboxModel.isProvidingDr,
+                        drProvidedFor: $scope.drProvidedFor
                     };
                 }
 
@@ -250,7 +257,8 @@ angular.module('datacollectors').controller('InternalDcDemandController',
                 cyber:  false,
                 serviceManagement:  false,
                 lan:    false,
-                wan:    false
+                wan:    false,
+                isProvidingDr:  false
             };
 
 
