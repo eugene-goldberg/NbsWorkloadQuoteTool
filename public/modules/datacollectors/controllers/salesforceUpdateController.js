@@ -10,6 +10,11 @@ angular.module('datacollectors').controller('SalesforceUpdateController',
 
         var user = Authentication.user;
 
+        $scope.formIsValid = false;
+
+        var selectedDc;
+        var selectedRegion;
+        var missingFields
         $scope.uploadUrl = '';
 
         $scope.quote;
@@ -97,6 +102,20 @@ angular.module('datacollectors').controller('SalesforceUpdateController',
             }
         }
 
+        $scope.displayAllDcRecords = function(){
+            var matchingDcRecords = [];
+            $scope.dcList = [];
+            $scope.dcNames.forEach(function(dc){
+                if(dc.region === selectedRegion){
+                    $scope.dcList.push({
+                        name:dc.name,
+                        country:dc.country,
+                        siteCode:dc.siteCode
+                    });
+                }
+            })
+        };
+
         var url = 'http://dctool-lnx.cloudapp.net:3001/api/files';
 
         var uploader = $scope.uploader = new FileUploader({
@@ -150,6 +169,7 @@ angular.module('datacollectors').controller('SalesforceUpdateController',
                 $scope.opportunityOwner = response.OpportunityOwner;
                 $scope.noDcInTheDeal = response.NoDcInTheDeal;
                 $scope.opportunityIndustry = response.Industry;
+                $scope.revenueStartDate = response.RevenueStartDate;
 
                 $scope.industries.forEach(function(industry){
                    if(industry.name === $scope.opportunityIndustry){
@@ -404,6 +424,7 @@ angular.module('datacollectors').controller('SalesforceUpdateController',
                 if(newValue){
                     if(newValue[0]){
                         console.log('Selected Region:  ' + newValue[0].name);
+                        selectedRegion = newValue[0].name;
                         $http.get('/dc_by_region_by_vendor/?region=' + newValue[0].name +'&vendor=' + $scope.dcVendor).success(function(response) {
                                     response.forEach(function(dcName){
                                         //if($scope.dcList.indexOf(dcName) == -1){
@@ -423,8 +444,20 @@ angular.module('datacollectors').controller('SalesforceUpdateController',
 
         $scope.selectedYear="";
 
+        function checkIfFormIsValid(){
+            if(($scope.selectedDataCenter.length == 1) && ($scope.selectedRegion.length == 1) && ($scope.industry)){
+                    selectedDc = $scope.selectedDataCenter[0].name;
+                selectedRegion = $scope.selectedRegion[0].name;
+                return true;
+            }
+            else {
+                return false;
+            }
+        }
+
         $scope.postUpdate = function(){
             var oppId;
+
 
             if($scope.selectedOpportunityId !== undefined){
                 oppId = $scope.selectedOpportunityId;
@@ -442,8 +475,8 @@ angular.module('datacollectors').controller('SalesforceUpdateController',
                 solutionArchitectName: $scope.solutionArchitectName,
                 noDcInTheDeal: $scope.noDcInTheDeal,
                 industry: $scope.industry,
-                dcName: $scope.selectedDataCenter[0].name,
-                dcRegion: $scope.selectedRegion[0].name,
+                dcName: selectedDc,
+                dcRegion: selectedDc,
                 vendor: $scope.dcVendor,
                 dcCountry: $scope.dcCountry,
                 dcSiteCode: $scope.dcSiteCode,
@@ -489,25 +522,50 @@ angular.module('datacollectors').controller('SalesforceUpdateController',
             };
 
             var json = angular.toJson(postData);
-            $http.post('/salesforce_update', json)
-                .then(function(result)
-                {
-                    setTimeout(function(){
-                        $http.get("/salesforce_quote/?fileName=" + result.data,
-                            {headers: { 'Accept': 'application/pdf' },
-                                responseType: 'arraybuffer' })
-                            .success(function(data) {
-                                alert('Update Successful');
-                                var file = new Blob([data], {type: 'application/pdf'});
-                                var fileURL = URL.createObjectURL(file);
+            var isFormValid;
+            isFormValid = checkIfFormIsValid();
+            if(isFormValid){
+                $http.post('/salesforce_update', json)
+                    .then(function(result)
+                    {
+                        setTimeout(function(){
+                            $http.get("/salesforce_quote/?fileName=" + result.data,
+                                {headers: { 'Accept': 'application/pdf' },
+                                    responseType: 'arraybuffer' })
+                                .success(function(data) {
+                                    alert('Update Successful');
+                                    var file = new Blob([data], {type: 'application/pdf'});
+                                    var fileURL = URL.createObjectURL(file);
 
-                                var newTab = $window.open('about:blank', '_blank');
-                                newTab.document.write("<object width='600' height='400' data='" + fileURL + "' type='"+ 'application/pdf' +"' ></object>");
-                            });
-                    }, 1000);
+                                    var newTab = $window.open('about:blank', '_blank');
+                                    newTab.document.write("<object width='600' height='400' data='" + fileURL + "' type='"+ 'application/pdf' +"' ></object>");
+                                });
+                        }, 1000);
+                    });
+            }
+            else {
+                var missingFields;
+                if(selectedDc == undefined){
+                    if(missingFields !== undefined){
+                        missingFields = 'Data Center' + ', ' + missingFields;
+                    }
+                    else {
+                        missingFields = 'Data Center';
+                    }
 
+                }
+                if(selectedRegion == undefined){
+                    if(missingFields !== undefined){
+                        missingFields = 'Region' + ', ' + missingFields;
+                    }
+                    else {
+                        missingFields = 'Region';
+                    }
 
-                });
+                }
+                alert('Before hitting Submit, you need to fill out the following fields: ' + missingFields);
+            }
+
         };
 
         $scope.getSalesforceQuote = function(){

@@ -317,6 +317,7 @@ module.exports = function(db) {
                                     opportunityDetail.SolutionArchitectName = doc['SolutionArchitectName'];
                                     opportunityDetail.NoDcInTheDeal = doc['NoDcInTheDeal'];
                                     opportunityDetail.Industry = doc['Industry'];
+                                    opportunityDetail.RevenueStartDate = doc['RevenueStartDate'];
 
                                     opportunityDetail.kwFY16 = doc['kwFY16'];
                                     opportunityDetail.kwFY17 = doc['kwFY17'];
