@@ -397,6 +397,7 @@ angular.module('datacollectors').controller('SalesforceUpdateController',
                         if ($scope.selectedOpportunity.length > 0) {
                             if ($scope.selectedOpportunity[0].name) {
                                 getDataCenterDetail($scope.selectedOpportunity[0].name, newValue[0].name);
+                                selectedDc = newValue[0].name;
                             }
                             else {
                                 getDataCenterDetail($scope.selectedOpportunityId, newValue[0].name);
@@ -476,7 +477,7 @@ angular.module('datacollectors').controller('SalesforceUpdateController',
                 noDcInTheDeal: $scope.noDcInTheDeal,
                 industry: $scope.industry,
                 dcName: selectedDc,
-                dcRegion: selectedDc,
+                dcRegion: selectedRegion,
                 vendor: $scope.dcVendor,
                 dcCountry: $scope.dcCountry,
                 dcSiteCode: $scope.dcSiteCode,
