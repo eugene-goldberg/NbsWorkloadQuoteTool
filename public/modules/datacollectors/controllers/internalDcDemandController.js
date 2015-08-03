@@ -90,7 +90,7 @@ angular.module('datacollectors').controller('InternalDcDemandController',
                     if(newValue){
                         if(newValue[0]){
                             $scope.$parent.selectedName = newValue[0].name;
-
+                            $scope.selectedDc = newValue[0].name;
                             var matchingDcRecord = $scope.dcNames.filter(function (entry) { return entry.name === newValue[0].name; });
                             $scope.dcCountry = matchingDcRecord[0].country;
                             $scope.dcSiteCode = matchingDcRecord[0].siteCode;
