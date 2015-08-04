@@ -3,7 +3,7 @@
 module.exports = {
 	db: 'mongodb://localhost/datamanager-03-test',
 	app: {
-		title: 'New Business DC Placement and Costing Tool'
+		title: 'DC Placement and costing Tool'
 	},
 	facebook: {
 		clientID: process.env.FACEBOOK_ID || 'asdf',

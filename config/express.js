@@ -1322,6 +1322,17 @@ module.exports = function(db) {
                         "kwFY24": req.body.kwRequired_2024,
                         "kwFY25": req.body.kwRequired_2025,
 
+                        "kwFY16_nq": req.body.kwRequired_2016_nq,
+                        "kwFY17_nq": req.body.kwRequired_2017_nq,
+                        "kwFY18_nq": req.body.kwRequired_2018_nq,
+                        "kwFY19_nq": req.body.kwRequired_2019_nq,
+                        "kwFY20_nq": req.body.kwRequired_2020_nq,
+                        "kwFY21_nq": req.body.kwRequired_2021_nq,
+                        "kwFY22_nq": req.body.kwRequired_2022_nq,
+                        "kwFY23_nq": req.body.kwRequired_2023_nq,
+                        "kwFY24_nq": req.body.kwRequired_2024_nq,
+                        "kwFY25_nq": req.body.kwRequired_2025_nq,
+
                         "cbFY16": req.body.cbRequired_2016,
                         "cbFY17": req.body.cbRequired_2017,
                         "cbFY18": req.body.cbRequired_2018,
@@ -1332,6 +1343,17 @@ module.exports = function(db) {
                         "cbFY23": req.body.cbRequired_2023,
                         "cbFY24": req.body.cbRequired_2024,
                         "cbFY25": req.body.cbRequired_2025,
+
+                        "cbFY16_nq": req.body.cbRequired_2016_nq,
+                        "cbFY17_nq": req.body.cbRequired_2017_nq,
+                        "cbFY18_nq": req.body.cbRequired_2018_nq,
+                        "cbFY19_nq": req.body.cbRequired_2019_nq,
+                        "cbFY20_nq": req.body.cbRequired_2020_nq,
+                        "cbFY21_nq": req.body.cbRequired_2021_nq,
+                        "cbFY22_nq": req.body.cbRequired_2022_nq,
+                        "cbFY23_nq": req.body.cbRequired_2023_nq,
+                        "cbFY24_nq": req.body.cbRequired_2024_nq,
+                        "cbFY25_nq": req.body.cbRequired_2025_nq,
 
                         cloudCompute:   req.body.cloudCompute,
                         bizCloudHc: req.body.bizCloudHc,
@@ -1348,8 +1370,25 @@ module.exports = function(db) {
                         wan:    req.body.wan,
                         IsProvidingDr: req.body.isProvidingDr,
                         DrProvidedFor: req.body.drProvidedFor,
+
+                        assetAndConfigurationManagement: req.body.assetAndConfigurationManagement,
+                        enterpriseServiceDesk: req.body.enterpriseServiceDesk,
+                        firewall: req.body.firewall,
+                        clientSiteLocalSupport: req.body.clientSiteLocalSupport,
+                        loadBalancers: req.body.loadBalancers,
+                        operationalServiceManagement: req.body.operationalServiceManagement,
+                        proxy: req.body.proxy,
+                        remoteManagementServices: req.body.remoteManagementServices,
+                        dns: req.body.dns,
+                        serviceIntegrationAndManagement: req.body.serviceIntegrationAndManagement,
+                        dataCenterBasedTouchLabor: req.body.dataCenterBasedTouchLabor,
+                        serviceRequestManagement: req.body.serviceRequestManagement,
+                        agilityPlatform: req.body.agilityPlatform,
+                        bigDataAndAnalytics: req.body.bigDataAndAnalytics,
+                        mobilityAndSocial: req.body.mobilityAndSocial,
+
                         KwlTotal:   kWlTotal,
-                        ElBudgetTotal: electricalBudgetTotal,
+                        ElBudgetTotal: electricalBudgetTotal
                     }
 
                     },
