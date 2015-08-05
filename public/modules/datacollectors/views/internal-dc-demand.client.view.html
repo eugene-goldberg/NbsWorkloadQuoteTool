@@ -243,6 +243,11 @@
                         <input id="serviceRequestManagement" type="checkbox" ng-model="computeCheckboxModel.serviceRequestManagement">
                     </div>
                 </div>
+                <div class="col-sm-12">
+                    <h6>Recurring Touch Labor Hours</h6>
+                    <input id="recurringTouchLaborHours" name="recurringTouchLaborHours" type="number" ng-pattern="/^\d{0,9}(\.\d{1,9})?$/" class="form-control"  ng-model="recurringTouchLaborHours"/>
+                    <br>
+                </div>
                     <div>
                         <br>
                         <h4>kW Requirement for each contract year</h4>

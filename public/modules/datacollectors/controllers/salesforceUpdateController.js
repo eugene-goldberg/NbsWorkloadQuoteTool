@@ -319,6 +319,7 @@ angular.module('datacollectors').controller('SalesforceUpdateController',
             $scope.dcCountry = '';
             $scope.dcSiteCode = '';
             $scope.dcSku = '';
+            $scope.recurringTouchLaborHours = '';
 
             $scope.computeCheckboxModel.cloudCompute = false;
             $scope.computeCheckboxModel.bizCloudHc = false;
@@ -408,9 +409,10 @@ angular.module('datacollectors').controller('SalesforceUpdateController',
                 $scope.cbRequired_2024_nq = response.cbFY24_nq;
                 $scope.cbRequired_2025_nq = response.cbFY25_nq;
 
-            $scope.dcCountry = response.DCCountry;
-            $scope.dcSiteCode = response.DCSiteCode;
-            $scope.dcSku = response.DCSKU;
+                $scope.dcCountry = response.DCCountry;
+                $scope.dcSiteCode = response.DCSiteCode;
+                $scope.dcSku = response.DCSKU;
+                $scope.recurringTouchLaborHours = response.recurringTouchLaborHours;
 
                $scope.computeCheckboxModel.cloudCompute = response.cloudCompute;
                $scope.computeCheckboxModel.bizCloudHc = response.bizCloudHc;
@@ -655,6 +657,7 @@ angular.module('datacollectors').controller('SalesforceUpdateController',
                 wan:    $scope.computeCheckboxModel.wan,
                 isProvidingDr: $scope.computeCheckboxModel.isProvidingDr,
                 drProvidedFor: $scope.drProvidedFor,
+                recurringTouchLaborHours: $scope.recurringTouchLaborHours,
 
                 assetAndConfigurationManagement: $scope.computeCheckboxModel.assetAndConfigurationManagement,
                 enterpriseServiceDesk: $scope.computeCheckboxModel.enterpriseServiceDesk,

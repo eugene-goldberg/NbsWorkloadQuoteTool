@@ -45,6 +45,8 @@ angular.module('datacollectors').controller('InternalDcDemandController',
                 $scope.dcCountry = '';
                 $scope.dcSiteCode = '';
 
+                $scope.recurringTouchLaborHours = '';
+
                 $scope.kwRequired_2016 = '';
                 $scope.kwRequired_2017 = '';
                 $scope.kwRequired_2018 = '';
@@ -153,6 +155,8 @@ angular.module('datacollectors').controller('InternalDcDemandController',
                                 $scope.dcCountry = response[0].DCCountry;
                                 $scope.dcSiteCode = response[0].DCSiteCode;
 
+                                $scope.recurringTouchLaborHours = response[0].recurringTouchLaborHours;
+
                                 $scope.kwRequired_2016 = response[0].kwFY16;
                                 $scope.kwRequired_2017 = response[0].kwFY17;
                                 $scope.kwRequired_2018 = response[0].kwFY18;
@@ -257,6 +261,8 @@ angular.module('datacollectors').controller('InternalDcDemandController',
                         dcName: selectedDc,
                         dcCountry: $scope.dcCountry,
                         dcSiteCode: $scope.dcSiteCode,
+
+                        recurringTouchLaborHours: $scope.recurringTouchLaborHours,
 
                         kwRequired_2016: $scope.kwRequired_2016,
                         kwRequired_2017: $scope.kwRequired_2017,
