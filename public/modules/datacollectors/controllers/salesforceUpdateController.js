@@ -47,6 +47,39 @@ angular.module('datacollectors').controller('SalesforceUpdateController',
 
         $scope.dcList = [];
 
+        $scope.computeCheckboxModel = {
+            cloudCompute : false,
+            bizCloudHc : false,
+            bizCloud:   false,
+            storageAsAService:  false,
+            mainframe:  false,
+            unixFarm:   false,
+            windowsFarm:    false,
+            as400:  false,
+            UcaaS:  false,
+            myWorkstyle:    false,
+            cyber:  false,
+            serviceManagement:  false,
+            lan:    false,
+            wan:    false,
+            isProvidingDr:  false,
+
+            assetAndConfigurationManagement: false,
+            enterpriseServiceDesk: false,
+            firewall: false,
+            clientSiteLocalSupport: false,
+            loadBalancers: false,
+            operationalServiceManagement: false,
+            proxy: false,
+            remoteManagementServices: false,
+            dns: false,
+            serviceIntegrationAndManagement: false,
+            dataCenterBasedTouchLabor: false,
+            serviceRequestManagement: false,
+            agilityPlatform: false,
+            bigDataAndAnalytics: false
+        };
+
         $scope.dcRegions = [
             {
                 name: "Americas"
@@ -250,6 +283,17 @@ angular.module('datacollectors').controller('SalesforceUpdateController',
             $scope.kwRequired_2024 = '';
             $scope.kwRequired_2025 = '';
 
+            $scope.kwRequired_2016_nq = '';
+            $scope.kwRequired_2017_nq = '';
+            $scope.kwRequired_2018_nq = '';
+            $scope.kwRequired_2019_nq = '';
+            $scope.kwRequired_2020_nq = '';
+            $scope.kwRequired_2021_nq = '';
+            $scope.kwRequired_2022_nq = '';
+            $scope.kwRequired_2023_nq = '';
+            $scope.kwRequired_2024_nq = '';
+            $scope.kwRequired_2025_nq = '';
+
             $scope.cbRequired_2016 = '';
             $scope.cbRequired_2017 = '';
             $scope.cbRequired_2018 = '';
@@ -260,6 +304,17 @@ angular.module('datacollectors').controller('SalesforceUpdateController',
             $scope.cbRequired_2023 = '';
             $scope.cbRequired_2024 = '';
             $scope.cbRequired_2025 = '';
+
+            $scope.cbRequired_2016_nq = '';
+            $scope.cbRequired_2017_nq = '';
+            $scope.cbRequired_2018_nq = '';
+            $scope.cbRequired_2019_nq = '';
+            $scope.cbRequired_2020_nq = '';
+            $scope.cbRequired_2021_nq = '';
+            $scope.cbRequired_2022_nq = '';
+            $scope.cbRequired_2023_nq = '';
+            $scope.cbRequired_2024_nq = '';
+            $scope.cbRequired_2025_nq = '';
 
             $scope.dcCountry = '';
             $scope.dcSiteCode = '';
@@ -279,6 +334,22 @@ angular.module('datacollectors').controller('SalesforceUpdateController',
             $scope.computeCheckboxModel.lan = false;
             $scope.computeCheckboxModel.wan = false;
             $scope.computeCheckboxModel.isProvidingDr = false;
+
+            $scope.computeCheckboxModel.assetAndConfigurationManagement = false;
+            $scope.computeCheckboxModel.enterpriseServiceDesk = false;
+            $scope.computeCheckboxModel.firewall = false;
+            $scope.computeCheckboxModel.clientSiteLocalSupport = false;
+            $scope.computeCheckboxModel.loadBalancers = false;
+            $scope.computeCheckboxModel.operationalServiceManagement = false;
+            $scope.computeCheckboxModel.proxy = false;
+            $scope.computeCheckboxModel.remoteManagementServices = false;
+            $scope.computeCheckboxModel.dns = false;
+            $scope.computeCheckboxModel.serviceIntegrationAndManagement = false;
+            $scope.computeCheckboxModel.dataCenterBasedTouchLabor = false;
+            $scope.computeCheckboxModel.serviceRequestManagement = false;
+            $scope.computeCheckboxModel.agilityPlatform = false;
+            $scope.computeCheckboxModel.bigDataAndAnalytics = false;
+            $scope.computeCheckboxModel.mobilityAndSocial = false;
 
             $scope.drProvidedFor = '';
 
@@ -304,6 +375,17 @@ angular.module('datacollectors').controller('SalesforceUpdateController',
             $scope.kwRequired_2024 = response.kwFY24;
             $scope.kwRequired_2025 = response.kwFY25;
 
+                $scope.kwRequired_2016_nq = response.kwFY16_nq;
+                $scope.kwRequired_2017_nq = response.kwFY17_nq;
+                $scope.kwRequired_2018_nq = response.kwFY18_nq;
+                $scope.kwRequired_2019_nq = response.kwFY19_nq;
+                $scope.kwRequired_2020_nq = response.kwFY20_nq;
+                $scope.kwRequired_2021_nq = response.kwFY21_nq;
+                $scope.kwRequired_2022_nq = response.kwFY22_nq;
+                $scope.kwRequired_2023_nq = response.kwFY23_nq;
+                $scope.kwRequired_2024_nq = response.kwFY24_nq;
+                $scope.kwRequired_2025_nq = response.kwFY25_nq;
+
             $scope.cbRequired_2016 = response.cbFY16;
             $scope.cbRequired_2017 = response.cbFY17;
             $scope.cbRequired_2018 = response.cbFY18;
@@ -314,6 +396,17 @@ angular.module('datacollectors').controller('SalesforceUpdateController',
             $scope.cbRequired_2023 = response.cbFY23;
             $scope.cbRequired_2024 = response.cbFY24;
             $scope.cbRequired_2025 = response.cbFY25;
+
+                $scope.cbRequired_2016_nq = response.cbFY16_nq;
+                $scope.cbRequired_2017_nq = response.cbFY17_nq;
+                $scope.cbRequired_2018_nq = response.cbFY18_nq;
+                $scope.cbRequired_2019_nq = response.cbFY19_nq;
+                $scope.cbRequired_2020_nq = response.cbFY20_nq;
+                $scope.cbRequired_2021_nq = response.cbFY21_nq;
+                $scope.cbRequired_2022_nq = response.cbFY22_nq;
+                $scope.cbRequired_2023_nq = response.cbFY23_nq;
+                $scope.cbRequired_2024_nq = response.cbFY24_nq;
+                $scope.cbRequired_2025_nq = response.cbFY25_nq;
 
             $scope.dcCountry = response.DCCountry;
             $scope.dcSiteCode = response.DCSiteCode;
@@ -334,6 +427,22 @@ angular.module('datacollectors').controller('SalesforceUpdateController',
                $scope.computeCheckboxModel.wan = response.wan;
                 $scope.computeCheckboxModel.isProvidingDr = response.IsProvidingDr;
                 $scope.drProvidedFor = response.DrProvidedFor;
+
+                $scope.computeCheckboxModel.assetAndConfigurationManagement = response.assetAndConfigurationManagement;
+                $scope.computeCheckboxModel.enterpriseServiceDesk = response.enterpriseServiceDesk;
+                $scope.computeCheckboxModel.firewall = response.firewall;
+                $scope.computeCheckboxModel.clientSiteLocalSupport = response.clientSiteLocalSupport;
+                $scope.computeCheckboxModel.loadBalancers = response.loadBalancers;
+                $scope.computeCheckboxModel.operationalServiceManagement = response.operationalServiceManagement;
+                $scope.computeCheckboxModel.proxy = response.proxy;
+                $scope.computeCheckboxModel.remoteManagementServices = response.remoteManagementServices;
+                $scope.computeCheckboxModel.dns = response.dns;
+                $scope.computeCheckboxModel.serviceIntegrationAndManagement = response.serviceIntegrationAndManagement;
+                $scope.computeCheckboxModel.dataCenterBasedTouchLabor = response.dataCenterBasedTouchLabor;
+                $scope.computeCheckboxModel.serviceRequestManagement = response.serviceRequestManagement;
+                $scope.computeCheckboxModel.agilityPlatform = response.agilityPlatform;
+                $scope.computeCheckboxModel.bigDataAndAnalytics = response.bigDataAndAnalytics;
+                $scope.computeCheckboxModel.mobilityAndSocial = response.mobilityAndSocial;
             }
 
             });
@@ -467,6 +576,10 @@ angular.module('datacollectors').controller('SalesforceUpdateController',
                     oppId = $scope.selectedOpportunity[0].name;
             }
 
+            if(selectedDc === undefined){
+                selectedDc = $scope.selectedDataCenter[0].name;
+            }
+
             var postData = {
                 opportunityId: oppId,
                 opportunityName: $scope.opportunityName,
@@ -494,6 +607,17 @@ angular.module('datacollectors').controller('SalesforceUpdateController',
                 kwRequired_2024: $scope.kwRequired_2024,
                 kwRequired_2025: $scope.kwRequired_2025,
 
+                kwRequired_2016_nq: $scope.kwRequired_2016_nq,
+                kwRequired_2017_nq: $scope.kwRequired_2017_nq,
+                kwRequired_2018_nq: $scope.kwRequired_2018_nq,
+                kwRequired_2019_nq: $scope.kwRequired_2019_nq,
+                kwRequired_2020_nq: $scope.kwRequired_2020_nq,
+                kwRequired_2021_nq: $scope.kwRequired_2021_nq,
+                kwRequired_2022_nq: $scope.kwRequired_2022_nq,
+                kwRequired_2023_nq: $scope.kwRequired_2023_nq,
+                kwRequired_2024_nq: $scope.kwRequired_2024_nq,
+                kwRequired_2025_nq: $scope.kwRequired_2025_nq,
+
                 cbRequired_2016: $scope.cbRequired_2016,
                 cbRequired_2017: $scope.cbRequired_2017,
                 cbRequired_2018: $scope.cbRequired_2018,
@@ -504,6 +628,17 @@ angular.module('datacollectors').controller('SalesforceUpdateController',
                 cbRequired_2023: $scope.cbRequired_2023,
                 cbRequired_2024: $scope.cbRequired_2024,
                 cbRequired_2025: $scope.cbRequired_2025,
+
+                cbRequired_2016_nq: $scope.cbRequired_2016_nq,
+                cbRequired_2017_nq: $scope.cbRequired_2017_nq,
+                cbRequired_2018_nq: $scope.cbRequired_2018_nq,
+                cbRequired_2019_nq: $scope.cbRequired_2019_nq,
+                cbRequired_2020_nq: $scope.cbRequired_2020_nq,
+                cbRequired_2021_nq: $scope.cbRequired_2021_nq,
+                cbRequired_2022_nq: $scope.cbRequired_2022_nq,
+                cbRequired_2023_nq: $scope.cbRequired_2023_nq,
+                cbRequired_2024_nq: $scope.cbRequired_2024_nq,
+                cbRequired_2025_nq: $scope.cbRequired_2025_nq,
 
                 cloudCompute:   $scope.computeCheckboxModel.cloudCompute,
                 bizCloudHc: $scope.computeCheckboxModel.bizCloudHc,
@@ -519,7 +654,23 @@ angular.module('datacollectors').controller('SalesforceUpdateController',
                 lan:    $scope.computeCheckboxModel.lan,
                 wan:    $scope.computeCheckboxModel.wan,
                 isProvidingDr: $scope.computeCheckboxModel.isProvidingDr,
-                drProvidedFor: $scope.drProvidedFor
+                drProvidedFor: $scope.drProvidedFor,
+
+                assetAndConfigurationManagement: $scope.computeCheckboxModel.assetAndConfigurationManagement,
+                enterpriseServiceDesk: $scope.computeCheckboxModel.enterpriseServiceDesk,
+                firewall: $scope.computeCheckboxModel.firewall,
+                clientSiteLocalSupport: $scope.computeCheckboxModel.clientSiteLocalSupport,
+                loadBalancers: $scope.computeCheckboxModel.loadBalancers,
+                operationalServiceManagement: $scope.computeCheckboxModel.operationalServiceManagement,
+                proxy: $scope.computeCheckboxModel.proxy,
+                remoteManagementServices: $scope.computeCheckboxModel.remoteManagementServices,
+                dns: $scope.dns,
+                serviceIntegrationAndManagement: $scope.computeCheckboxModel.serviceIntegrationAndManagement,
+                dataCenterBasedTouchLabor: $scope.computeCheckboxModel.dataCenterBasedTouchLabor,
+                serviceRequestManagement: $scope.computeCheckboxModel.serviceRequestManagement,
+                agilityPlatform: $scope.computeCheckboxModel.agilityPlatform,
+                bigDataAndAnalytics: $scope.computeCheckboxModel.bigDataAndAnalytics,
+                mobilityAndSocial: $scope.computeCheckboxModel.mobilityAndSocial
             };
 
             var json = angular.toJson(postData);
@@ -626,22 +777,6 @@ angular.module('datacollectors').controller('SalesforceUpdateController',
             });
         };
 
-        $scope.computeCheckboxModel = {
-            cloudCompute : false,
-            bizCloudHc : false,
-            bizCloud:   false,
-            storageAsAService:  false,
-            mainframe:  false,
-            unixFarm:   false,
-            windowsFarm:    false,
-            as400:  false,
-            UcaaS:  false,
-            myWorkstyle:    false,
-            cyber:  false,
-            serviceManagement:  false,
-            lan:    false,
-            wan:    false,
-            isProvidingDr:  false
-        };
+
     }
 ]);
